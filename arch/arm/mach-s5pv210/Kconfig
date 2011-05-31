@@ -9,6 +9,14 @@
 
 if ARCH_S5PV210
 
+config MACH_S5PC110_ARIES_OC
+
+  bool "Enable CPU Overclock"
+
+  help
+
+    Say Y here to enable CPU Overclock up to 1.6ghz
+
 config CPU_S5PV210
 	bool
 	select PLAT_S5P
