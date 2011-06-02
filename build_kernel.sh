@@ -16,7 +16,6 @@ if [ ! -d charge_initramfs ]; then
 fi
 
 rm -rf charge_voodoo5
- you haz balls?
 if [ "$1" != "n00b" ]; then
 	echo "##### Winning! #####"
 	tag="voodoo"
@@ -44,7 +43,7 @@ else
 	mkdir charge_voodoo5
 	cp -a charge_initramfs charge_voodoo5/full-uncompressed
 	rm -rf charge_voodoo5/full-uncompressed/.git
-#fi
+fi
 
 cd $WORK
 rm -f kernel_update-"$tag".zip
@@ -57,5 +56,4 @@ cp -p arch/arm/boot/zImage update/kernel_update
 cd update
 zip -r -q kernel_update.zip . 
 mv kernel_update.zip ../kernel_update-"$tag".zip
-
 
