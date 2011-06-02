@@ -12,7 +12,7 @@ if [ ! -d arm-2009q3 ]; then
 fi
 
 if [ ! -d charge_initramfs ]; then
-	git clone git://github.com/imnuts/charge_initramfs.git
+	git clone git://github.com/imnuts/charge_initramfs.git -b froyo-voodoo
 fi
 
 rm -rf charge_voodoo5
@@ -21,7 +21,7 @@ if [ "$1" != "n00b" ]; then
 	echo "##### Winning! #####"
 	tag="voodoo"
 	if [ ! -d lagfix ]; then
-		git clone git://github.com/project-voodoo/lagfix.git
+		git clone git://github.com/imnuts/lagfix.git
 	fi
 
 	if [ ! -f lagfix/stages_builder/stages/stage1.tar ] || \
@@ -34,8 +34,8 @@ if [ "$1" != "n00b" ]; then
 	fi
 
 	./lagfix/voodoo_injector/generate_voodoo_initramfs.sh \
-		-s fascinate_initramfs \
-		-d fascinate_voodoo5 \
+		-s charge_initramfs \
+		-d charge_voodoo5 \
 		-p lagfix/voodoo_initramfs_parts \
 		-t lagfix/stages_builder/stages \
 		-u -w
@@ -50,7 +50,7 @@ cd $WORK
 rm -f kernel_update-"$tag".zip
 make clean mrproper
 make ARCH=arm charge_defconfig
-make -j8 CROSS_COMPILE=../arm-2009q3/bin/arm-none-linux-gnueabi- \
+make -j `expr $(grep processor /proc/cpuinfo | wc -l) + 1` CROSS_COMPILE=../arm-2009q3/bin/arm-none-linux-gnueabi- \
 	ARCH=arm HOSTCFLAGS="-g -O3"
 
 cp -p arch/arm/boot/zImage update/kernel_update
