@@ -43,7 +43,7 @@ else
 	mkdir charge_voodoo5
 	cp -a charge_initramfs charge_voodoo5/full-uncompressed
 	rm -rf charge_voodoo5/full-uncompressed/.git
-#fi
+fi
 
 cd $WORK
 rm -f kernel_update-"$tag".zip
