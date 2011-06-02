@@ -16,7 +16,6 @@ if [ ! -d charge_initramfs ]; then
 fi
 
 rm -rf charge_voodoo5
-echo=you haz balls?
 if [ "$1" != "n00b" ]; then
 	echo "##### Winning! #####"
 	tag="voodoo"
