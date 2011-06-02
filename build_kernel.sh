@@ -16,7 +16,7 @@ if [ ! -d charge_initramfs ]; then
 fi
 
 rm -rf charge_voodoo5
- you haz balls?
+echo=you haz balls?
 if [ "$1" != "n00b" ]; then
 	echo "##### Winning! #####"
 	tag="voodoo"
@@ -57,5 +57,4 @@ cp -p arch/arm/boot/zImage update/kernel_update
 cd update
 zip -r -q kernel_update.zip . 
 mv kernel_update.zip ../kernel_update-"$tag".zip
-
 
